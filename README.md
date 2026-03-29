@@ -12,7 +12,7 @@ Repeats until all suggestions are done, then plays a sound and exits.
 ## Requirements
 
 - Windows
-- AutoHotkey v2 — download at https://www.autohotkey.com/
+- AutoHotkey v2
 - Grammarly open in Chrome — works on both app.grammarly.com and the Google Docs Grammarly extension
 
 ## Setup

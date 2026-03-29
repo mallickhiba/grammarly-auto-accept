@@ -1,52 +1,50 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 Esc::ExitApp
 
 CoordMode "Pixel", "Screen"
 CoordMode "Mouse", "Screen"
 CoordMode "ToolTip", "Screen"
 
-imgNormal := "C:\Users\Hiba\Desktop\accept_normal.png"
-imgHover  := "C:\Users\Hiba\Desktop\accept_hover.png"
+imgNormal := A_ScriptDir "\accept_normal.png"
+imgHover  := A_ScriptDir "\accept_hover.png"
 
-w := 73
-h := 36
 count := 0
 noFindStreak := 0
 
-left := A_ScreenWidth // 2
-top := 0
-right := A_ScreenWidth
+left   := A_ScreenWidth // 2
+top    := 0
+right  := A_ScreenWidth
 bottom := A_ScreenHeight
 
-AchievementSound() {
-    SoundBeep 1047, 80  ; C6
-    SoundBeep 1319, 80  ; E6
-    SoundBeep 1568, 80  ; G6
-    SoundBeep 2093, 150 ; C7
+FinishSound() {
+    SoundBeep 1047, 80
+    SoundBeep 1319, 80
+    SoundBeep 1568, 80
+    SoundBeep 2093, 150
     Sleep 60
-    SoundBeep 2637, 80  ; E7
-    SoundBeep 2093, 300 ; C7 sparkle hold
+    SoundBeep 2637, 80
+    SoundBeep 2093, 300
 }
+
 Loop {
     found := false
-    matchType := ""
 
     if ImageSearch(&x, &y, left, top, right, bottom, "*50 " imgHover) {
         found := true
-        matchType := "hover"
     }
     else if ImageSearch(&x, &y, left, top, right, bottom, "*50 " imgNormal) {
         found := true
-        matchType := "normal"
     }
 
     if found {
         noFindStreak := 0
-        clickX := x + Round(w * 0.65)
-        clickY := y + Round(h * 0.50)
 
-        MouseMove clickX, clickY, 15  ; faster move
-        Sleep 250                      ; shorter hover wait
+        ; x,y is top-left corner of matched image — click 20px right and 10px down
+        clickX := x + 20
+        clickY := y + 10
+
+        MouseMove clickX, clickY, 15
+        Sleep 250
 
         MouseGetPos &mx, &my
         ToolTip "Accepting...", mx + 15, my + 15
@@ -59,7 +57,7 @@ Loop {
         MouseGetPos &mx, &my
         ToolTip count " accepted!", mx + 15, my + 15
 
-        Sleep 1200  ; shorter wait for Grammarly to load next
+        Sleep 1200
     } else {
         noFindStreak++
         MouseGetPos &mx, &my
@@ -67,8 +65,8 @@ Loop {
 
         if (noFindStreak >= 8) {
             ToolTip ""
-            AchievementSound()
-            MsgBox count " suggestions accepted!", "All done!", 64
+            FinishSound()
+            MsgBox count " suggestions accepted!`n`nGrammarly is all clear.", "All done!", 64
             ExitApp
         }
 

@@ -39,7 +39,6 @@ Loop {
     if found {
         noFindStreak := 0
 
-        ; x,y is top-left corner of matched image — click 20px right and 10px down
         clickX := x + 20
         clickY := y + 10
 

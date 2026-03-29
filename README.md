@@ -69,14 +69,6 @@ Click Accept manually once — it will continue automatically after that.
 - Pro/paywalled suggestions are skipped automatically
 - Tested on Windows 11 with Chrome
 
-## Files
-
-| File | Description |
-|---|---|
-| `grammarly.ahk` | Main script |
-| `accept_normal.png` | Your screenshot of the Accept button (you provide this) |
-| `accept_hover.png` | Your screenshot of the hovered Accept button (you provide this) |
-
 ## Stopping the script
 
 Press **Escape** or right-click the green H icon in taskbar → Exit.

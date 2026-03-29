@@ -1,22 +1,19 @@
 # grammarly-auto-accept
 
-
-# Grammarly Auto Accept
-
 Automatically accepts all Grammarly suggestions one by one — no clicking required.
 Built with AutoHotkey v2 for Windows.
 
 ## How it works
 
-The script scans your screen for the green Accept button, moves the mouse over it
-to trigger Grammarly's hover state, clicks it, then waits for the next suggestion
-to load. Repeats until all suggestions are done, then plays a sound and exits.
+The script scans your screen for the green Accept button using image matching,
+moves the mouse over it to trigger Grammarly's hover state, then clicks it.
+Repeats until all suggestions are done, then plays a sound and exits.
 
 ## Requirements
 
 - Windows
 - AutoHotkey v2 — download at https://www.autohotkey.com/
-- Grammarly open in Chrome at app.grammarly.com
+- Grammarly open in Chrome — works on both app.grammarly.com and the Google Docs Grammarly extension
 
 ## Setup
 
@@ -24,51 +21,50 @@ to load. Repeats until all suggestions are done, then plays a sound and exits.
 Download and install from https://www.autohotkey.com/
 
 ### 2. Download the script
-Download `grammarly.ahk` from this repo and save it to your Desktop.
+Download `grammarly.ahk` from this repo and put it in a folder on your computer.
 
 ### 3. Take your own button screenshots
-The script uses image matching to find the Accept button, so you need to take
-screenshots on YOUR screen for it to work correctly (different screen scales
-and resolutions produce different images).
+The script uses image matching to find the Accept button, so you need screenshots
+taken on YOUR screen.
 
-**Step 1** — Open Grammarly at app.grammarly.com with a document that has suggestions.
+**Step 1** — Open Grammarly with a document that has at least one suggestion visible.
 
 **Step 2** — Press `Win + Shift + S` to open the snipping tool. Crop tightly around
-just the green Accept button. Save to your Desktop as `accept_normal.png`.
+just the green Accept button with no surrounding whitespace (Check files accept_normal.png and accept_hover.png for reference). 
 
-**Step 3** — Hover your mouse over the Accept button (it gets slightly lighter).
-Take another screenshot the same way. Save as `accept_hover.png`.
+Save it in the same folder as `grammarly.ahk` as:
+```
+accept_normal.png
+```
 
-> Crop as tightly as possible — just the button, no surrounding whitespace.
+**Step 3** — Hover your mouse over the Accept button (it gets slightly darker).
+Take another screenshot the same way. Save it in the same folder as:
+```
+accept_hover.png
+```
 
 ### 4. Run it
 Double-click `grammarly.ahk`. A green H icon will appear in your taskbar.
 
 ## Usage
 
-- Open your Grammarly document in Chrome
-- Double-click `grammarly.ahk`  
-- A tooltip near your cursor shows accepted count as it runs
-- When finished, a chime plays and a popup shows the total
+- Open your Grammarly document with a sugggestion with an Accept button visible.
+- Double-click `grammarly.ahk`
+- A tooltip near your cursor shows the running count as it works
+- When finished, a chime plays and a popup shows the total accepted
 - Press **Escape** at any time to stop
 
 ## Troubleshooting
 
 **Script can't find the button**
-Your display scaling may differ. Go to Display Settings and check your Scale %.
-Retake both screenshots at your current scaling and try again.
-
-**Script accepts wrong things**
-Your screenshots are matching something else. Retake them more tightly cropped
-around just the button and try again.
+Retake both screenshots more tightly cropped around just the button and try again.
 
 **Script gets stuck on one suggestion**
 Click Accept manually once — it will continue automatically after that.
 
 ## Notes
 
-- Works on app.grammarly.com in Chrome
-- Does not work with the Grammarly for Google Docs extension (different architecture)
+- Works on app.grammarly.com in Chrome and with the Grammarly extension on Google Docs
 - Pro/paywalled suggestions are skipped automatically
 - Tested on Windows 11 with Chrome
 
@@ -77,8 +73,8 @@ Click Accept manually once — it will continue automatically after that.
 | File | Description |
 |---|---|
 | `grammarly.ahk` | Main script |
-| `accept_normal.png` | Your screenshot of the Accept button (you take this) |
-| `accept_hover.png` | Your screenshot of the hovered Accept button (you take this) |
+| `accept_normal.png` | Your screenshot of the Accept button (you provide this) |
+| `accept_hover.png` | Your screenshot of the hovered Accept button (you provide this) |
 
 ## Stopping the script
 

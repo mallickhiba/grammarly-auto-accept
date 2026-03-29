@@ -18,7 +18,7 @@ Repeats until all suggestions are done, then plays a sound and exits.
 ## Setup
 
 ### 1. Install AutoHotkey v2
-Download and install from https://www.autohotkey.com/
+Download and install from https://www.autohotkey.com/download/ahk-v2.exe
 
 ### 2. Download the script
 Download `grammarly.ahk` from this repo and put it in a folder on your computer.
@@ -30,7 +30,8 @@ taken on YOUR screen.
 **Step 1** — Open Grammarly with a document that has at least one suggestion visible.
 
 **Step 2** — Press `Win + Shift + S` to open the snipping tool. Crop tightly around
-just the green Accept button with no surrounding whitespace (Check files accept_normal.png and accept_hover.png for reference). 
+just the green Accept button with no surrounding whitespace 
+(Check files accept_normal.png and accept_hover.png for reference). 
 
 Save it in the same folder as `grammarly.ahk` as:
 ```
@@ -48,7 +49,7 @@ Double-click `grammarly.ahk`. A green H icon will appear in your taskbar.
 
 ## Usage
 
-- Open your Grammarly document with a sugggestion with an Accept button visible.
+- Open your Grammarly document with a suggestion with an Accept button visible.
 - Double-click `grammarly.ahk`
 - A tooltip near your cursor shows the running count as it works
 - When finished, a chime plays and a popup shows the total accepted
